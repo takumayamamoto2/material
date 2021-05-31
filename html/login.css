@@ -1,0 +1,143 @@
+/*カーソル矢印の設定*/
+body{
+    cursor: auto;
+}
+
+/*文字色灰色*/
+.text-color-gray{
+    color: #666666;
+}
+
+/*文字小さめ*/
+.text-mini{
+    font-size: 14px;
+}
+
+/*マージンとパディングリセット*/
+.m-p-reset{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*マージンで下を少し空ける*/
+.margin-bottom{
+    margin: 5px;
+}
+
+/*真ん中の枠の設定*/
+.main-width{
+    width: 350px;
+    height: 390px;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.5);
+    transition: .5s;
+}
+
+/*真ん中の枠にマウスカーソルを載せたときの変化の値*/
+.main-width:hover{
+    background-color: rgba(255,255,255,1);
+}
+
+/*ロゴの設定*/
+.logo-image{
+    background-image: url(img/material_logo.png);
+    background-repeat: no-repeat;
+    background-position: 0px;
+}
+
+/*ヘッダーのライン設定*/
+.header-line{
+    height: 50px;
+    border-bottom: solid 1px #83c34a;
+    margin-bottom: 180px;
+    background-color: #83c34a;
+}
+/*文字を真ん中に*/
+.text-center{
+    text-align: center;
+}
+
+/*検索窓設定*/
+.seach-border{
+    border: solid 1px #555555;
+    padding: 6px;
+    margin: 0px;
+}
+
+/*リンクの下線を消す*/
+a{
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+}
+
+.height-margin{
+    margin: 10px 0px 10px 0px;
+}
+
+/*タイトルの文字*/
+.title-text{
+    text-align: center;
+    color: #555555;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/*ログイン文字*/
+.green-text-button{
+    width: 210px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #83c34a;
+    color: white;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/*新規作成の文字*/
+.new-text{
+    width: 210px;
+    text-align: center;
+    background-color: #aaaaaa;
+    color: white;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/*ログイン枠*/
+.radius-border{
+    border: solid 1px #555555;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/*背景画像の設定*/
+.back-image{
+    background-image: url(img/back.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 1000px;
+}
+
+/*赤文字*/
+.red-text{
+    color: #ff0000;
+}
+
+/*緑文字*/
+.green-text{
+    color: #72b239;
+}
+
+/*青文字*/
+.blue-text{
+    color: #0000ff;
+}
+
+/*太字*/
+.bold-text{
+    font-weight: bold;
+}

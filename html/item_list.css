@@ -1,0 +1,405 @@
+/*カーソル矢印の設定*/
+body{
+    cursor: auto;
+}
+
+/*カーソル矢印を指にする*/
+.pointer{
+    cursor: pointer;
+}
+
+/*ulの■を消す*/
+ul{
+    list-style-type: none;
+}
+
+/*リンクの下線を消す*/
+.link-none{
+    text-decoration: none;
+}
+
+/*ブロックモード*/
+.block{
+    display: block;
+}
+
+/*flexモード*/
+.flex{
+    display: flex;
+    align-items: flex-start; /*画像を伸ばさず固定する*/
+}
+
+/*flex-wrapモード*/
+.flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*flex-endモード*/
+.flex-end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*ヘッダーのリスト設定*/
+.header-list{
+    display: flex;
+    justify-content: flex-end;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/*ヘッダーのライン設定*/
+.header-line{
+    height: 50px;
+    background-color: #83c34a;
+    padding: 10px;
+}
+
+/*flexの比率１*/
+.flex-para{
+    flex: 1;
+}
+
+/*９００幅*/
+.width-900{
+    width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/*９００のみ*/
+.width-900-only{
+    width: 900px;
+}
+
+/*５００幅*/
+.width-500{
+    width: 500px;
+    min-width: 400px;
+}
+
+/*最小の幅１０００*/
+.min-1000{
+    min-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/*メインコンテンツの９００幅*/
+.main-width-900{
+    width: 900px;
+    margin: 0 auto;
+}
+
+/*文字色灰色*/
+.text-color-gray{
+    color: #666666;
+}
+
+/*文字小さめ*/
+.text-mini{
+    font-size: 14px;
+}
+
+/*文字大きめ*/
+.text-big{
+    font-size: 18px;
+}
+
+/*タイトルの文字*/
+.title-text{
+    color: #555555;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/*マージンとパディングリセット*/
+.m-p-reset{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*マージンで下を少し空ける*/
+.margin-bottom{
+    margin-bottom: 5px;
+}
+
+/*画像なしの設定*/
+.no-image{
+    background-image: url(img/noimage.png);
+    background-repeat: no-repeat;
+    background-position: 0px;
+}
+
+/*ロゴの設定*/
+.logo-image{
+    background-image: url(img/material_logo.png);
+    background-repeat: no-repeat;
+    background-position: 0px;
+}
+
+/*検索アイコンの設定*/
+.search-image{
+    background-image: url(img/search.png);
+    background-repeat: no-repeat;
+    background-position: 0px;
+    height: 32px;
+    width: 32px;
+}
+
+/*文字を真ん中に*/
+.text-center{
+    text-align: center;
+}
+
+/*真ん中寄せ*/
+.margin-center{
+    margin: 0 auto;
+}
+
+/*検索窓設定*/
+.search-border{
+    border: solid 1px #555555;
+    padding: 6px;
+}
+
+/*イラストボタン*/
+.red-text-button{
+    text-align: center;
+    cursor: pointer;
+    background-color: #ff3333;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*BGM・効果音ボタン*/
+.gray-text-button{
+    text-align: center;
+    cursor: pointer;
+    background-color: #aaaaaa;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*並び替えボタン*/
+.sort-button{
+    text-align: center;
+    cursor: pointer;
+    background-color: #83c34a;
+    color: white;
+    border: solid 1px;
+    font-size: 20px;
+} 
+
+/*絞り込みボタン*/
+.filtering-button{
+    text-align: center;
+    cursor: pointer;
+    background-color: #ffbb22;
+    color: white;
+    border: solid 1px;
+    font-size: 20px;
+}
+
+/*カートに追加するボタン*/
+.add-text-button{
+    text-align: center;
+    cursor: pointer;
+    background-color: #83c34a;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*カートに入れた商品を見るボタン*/
+.look-button{
+    text-align: center;
+    cursor: pointer;
+    background-color: #ffbb22;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*灰色ボタン*/
+.gray-button{
+    text-align: center;
+    cursor: pointer;
+    background-color: #dddddd;
+    color: black;
+    border: solid 1px;
+    font-size: 16px;
+}
+
+/*購入ボタン*/
+.orenge-text-button{
+    width: 400px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ffbb22;
+    color: white;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/*ダウンロードボタン*/
+.download-button{
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #83c34a;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*囲い*/
+.normal-border{
+    border: solid 1px #555555;
+}
+
+/*パディング*/
+.padding{
+    padding: 6px;
+}
+
+/*マージン*/
+.margin{
+    margin: 5px;
+}
+
+/*オレンジ文字*/
+.orenge-text{
+    font-size: 18px;
+    color: #ffaa22;
+}
+
+/*赤文字*/
+.red-text{
+    color: #ff0000;
+}
+
+/*緑文字*/
+.green-text{
+    color: #72b239;
+}
+
+/*灰色文字*/
+.gray-text{
+    color: #555555;
+}
+
+/*青文字*/
+.blue-text{
+    color: #0000ff;
+}
+
+/*太字*/
+.bold-text{
+    font-weight: bold;
+}
+
+dt,dd{
+    margin: 0 auto;
+    text-align: center;
+    }
+    
+/*背景白色*/
+.back-color-white{
+    background-color: #ffffff;
+}
+
+/*背景色*/
+.back-color-main{
+    background-color: #dddddd;
+}
+
+/*サブ背景色*/
+.back-color-sub{
+    background-color: #eeeeee;
+}
+
+/*nav設定*/
+.back-color-nav{
+    background-color: #ffffff;
+    border-top: solid 1px #83c34a;
+    border-bottom: solid 1px #aaaaaa;
+}
+
+/*ショッピングカート商品欄*/
+.item-set{
+    background-color: #ffffff;
+    border-top: solid 1px #bbbbbb;
+    border-bottom: solid 1px #bbbbbb;
+}
+
+/*文字を右寄せ*/
+.text-right{
+    text-align: right;
+}
+
+/*文字を左寄せ*/
+.text-left{
+    text-align: left;
+}
+
+/*対象を右寄せ*/
+.set-right{
+    margin: 0 0 0 auto;
+}
+
+/*上を空ける*/
+.margin-top{
+    margin-top: 30px;
+}
+
+/*下を空ける*/
+.margin-bottom{
+    margin-bottom: 10px;
+}
+
+/*下を空ける強*/
+.margin-bottom-power{
+    margin-bottom: 50px;
+}
+
+/*右空け*/
+.margin-right{
+    margin-right: 100px;
+}
+
+/*高さ200にする*/
+.height-200{
+    height: 200px;
+}
+
+/*コメントボックス*/
+.comment-box{
+    width: 900px;
+    height: 100px;
+    min-height: 100px;
+    max-height: 100px;
+    background-color: #ffffff;
+    border: solid 1px #000000;
+}
+
+/*画像サイズ固定*/
+.img-lock{
+    height: 150px;
+    width: 150px;
+}
+
+/*画像サイズ固定大きめ*/
+.img-lock-big{
+    height: 300px;
+    width: 300px;
+}
