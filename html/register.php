@@ -1,4 +1,7 @@
 <?php
+
+require_once '../conf/const.php';
+
 // セッション開始
 session_start();
 
@@ -8,14 +11,8 @@ if(isset($_SESSION['user_id'])){
     exit;
 }
 
-$host     = 'localhost';
-$username = 'codecamp44071';   // MySQLのユーザ名
-$password = 'codecamp44071';   // MySQLのパスワード
-$dbname   = 'codecamp44071';   // MySQLのDB名
-$charset  = 'utf8';  // データベースの文字コード
-
 // MySQL用のDSN文字列
-$dsn = 'mysql:dbname='.$dbname.';host='.$host.';charset='.$charset;
+$dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 
 // 変数の初期化＆配列宣言
 $data               = array();  // 下に商品一覧を取得して表示させるための配列
@@ -25,10 +22,11 @@ $login_regex       = '/^[a-zA-Z0-9]{6,}$/'; // 正規表現 半角英数字
 $already_name   = '';
 
 try {
-    // データベースに接続
-    $dbh = new PDO($dsn,$username,$password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'));
-    $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        // データベースに接続
+        $dbh = new PDO($dsn, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'));
+        $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
                 
     // エラーチェック&アップロード画像ファイルの保存
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -143,9 +141,7 @@ try {
                 <?php } ?></div>
                 
                 <!--成功メッセージ-->
-                <div class="blue-text bold-text">
-                <?php if(count($success_msg) === 1){
-                print $success_msg ; }?> </div>
+                <div class="blue-text bold-text"> <?php print $success_msg; ?> </div>
                 <div><a href="login.php">ログインページに戻る</a></div>
             </div>
         </main>
