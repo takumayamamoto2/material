@@ -1,5 +1,7 @@
 <?php
 
+require_once '../conf/const.php';
+
 // セッション開始
 session_start();
 // セッション変数からuser_idを取得
@@ -11,14 +13,8 @@ if(isset($_SESSION['user_id'])){
     exit;
 }
 
-$host     = 'localhost';
-$username = 'codecamp44071';   // MySQLのユーザ名
-$password = 'codecamp44071';   // MySQLのパスワード
-$dbname   = 'codecamp44071';   // MySQLのDB名
-$charset  = 'utf8';  // データベースの文字コード
-
 // MySQL用のDSN文字列
-$dsn = 'mysql:dbname='.$dbname.';host='.$host.';charset='.$charset;
+$dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 
 // 変数の初期化＆配列宣言
 $img_dir  = './img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
@@ -32,10 +28,11 @@ $mode='';
 $user_name = '';
 
 try {
-    // データベースに接続
-        $dbh = new PDO($dsn,$username,$password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'));
+        // データベースに接続
+        $dbh = new PDO($dsn, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'));
         $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         
     try {
         // ユーザー名の取得
@@ -75,8 +72,7 @@ try {
             try {
                 
                 // SQL文を作成 material_itemsを取得
-                $sql ='SELECT SUM(material_items.price) AS price_sum,
-                    SUM(material_carts.amount) AS amount_sum,
+                $sql ='SELECT 
                 	material_items.id,
                     material_items.name,
                     material_items.price,
@@ -86,7 +82,6 @@ try {
                     material_items.type2,
                     material_items.comment,
                     material_items.status,
-                    material_carts.user_id,
                     material_carts.item_id,
                     material_carts.amount
                 FROM
@@ -94,9 +89,7 @@ try {
                     INNER JOIN material_carts
                     ON material_items.id = material_carts.item_id
                 WHERE
-                    user_id = ?
-                GROUP BY
-                    material_items.id;';
+                    user_id = ?;';
                 
                 // SQL文を実行する準備
                 $stmt = $dbh->prepare($sql);
@@ -112,7 +105,8 @@ try {
                 }
                 
                 // SQL文を作成 material_itemsとmaterial_cartsの合計値を取得
-                $sql ='SELECT SUM(material_items.price * material_carts.amount) AS price_sum,
+                $sql ='SELECT 
+                    SUM(material_items.price * material_carts.amount) AS price_sum,
                     SUM(material_carts.amount) AS amount_sum
     
                 FROM
@@ -275,9 +269,9 @@ try {
                 </div>
                 
                 <form method="post" class="header-list text-right set-right">
-                    <div class="bold-text text-big margin-right"><?php print $value['amount_sum'];?></div
+                    <div class="bold-text text-big margin-right"><?php print $value['amount'];?></div
                     <input type="hidden" name="id" value="<?php print $value['id'];?>">
-                    <div class="bold-text text-big margin-right">￥<?php print $value['price_sum'];?></div>
+                    <div class="bold-text text-big margin-right">￥<?php print $value['price'];?></div>
                     
                 </form>
             </div>

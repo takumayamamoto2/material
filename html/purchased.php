@@ -1,5 +1,7 @@
 <?php
 
+require_once '../conf/const.php';
+
 // セッション開始
 session_start();
 // セッション変数からuser_idを取得
@@ -11,14 +13,8 @@ if(isset($_SESSION['user_id'])){
     exit;
 }
 
-$host     = 'localhost';
-$username = 'codecamp44071';   // MySQLのユーザ名
-$password = 'codecamp44071';   // MySQLのパスワード
-$dbname   = 'codecamp44071';   // MySQLのDB名
-$charset  = 'utf8';  // データベースの文字コード
-
 // MySQL用のDSN文字列
-$dsn = 'mysql:dbname='.$dbname.';host='.$host.';charset='.$charset;
+$dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 
 // 変数の初期化＆配列宣言
 $img_dir  = './img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
@@ -43,10 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 // アップロードした新しいデータを取得
 try {
-    // データベースに接続
-        $dbh = new PDO($dsn,$username,$password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'));
+        // データベースに接続
+        $dbh = new PDO($dsn, DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4'));
         $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     
     try {
         // ユーザー名の取得
@@ -77,19 +74,16 @@ try {
         try {
             
             // SQL文を作成 material_itemsを取得
-            $sql ='SELECT SUM(material_items.price) AS price_sum,
-                SUM(material_item_history.amount) AS amount_sum,
+            $sql ='SELECT 
             	material_items.id,
                 material_items.name,
-                material_items.price,
                 material_items.filename,
                 material_items.type,
                 material_items.type2,
                 material_items.comment,
-                material_item_history.user_id,
                 material_item_history.item_id,
-                material_item_history.amount,
-                material_item_history.createdate
+                SUM(material_items.price) AS price_sum,
+                SUM(material_item_history.amount) AS amount_sum
             FROM
                 material_items
                 INNER JOIN material_item_history
@@ -165,13 +159,12 @@ try {
                 <div class="width-500">
                     <div class="title-text"><?php print htmlspecialchars($value['name'],ENT_QUOTES,'UTF-8'); ?></div>
                     <div>種類：<?php print htmlspecialchars($value['type2'],ENT_QUOTES,'UTF-8'); ?></div>
-                    <div class="bold-text"><?php print $value['amount_sum']; ?>個 ￥<?php print $price_sum = $value['amount_sum'] * $value['price']; ?>で購入済み</div>
+                    <div class="bold-text"><?php print $value['amount_sum']; ?>個 ￥<?php print $value['amount_sum'] * $value['price_sum']; ?>で購入済み</div>
                     <div class="bold-text text-big">【商品説明】</div>
                     <div><?php print htmlspecialchars($value['comment'],ENT_QUOTES,'UTF-8'); ?></div>
                 </div>
                 
                 <form action="download.php" method="post" class="set-right">
-                    <div class="text-color-gray"><?php print '購入日時：'.$value['createdate'] ?></div>
                     <div><input class="bold-text download-button padding margin" type="submit" value="ダウンロードする"></div>
                     <?php if($value['type'] === 2){    
                     print '<div class="margin-top">サンプルを聞く</div>
