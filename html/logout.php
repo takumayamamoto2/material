@@ -27,4 +27,3 @@ session_destroy();
 // ログアウトの処理が完了したらログインページへリダイレクト
 header('Location: login.php');
 exit;
-?>
