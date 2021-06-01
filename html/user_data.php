@@ -19,7 +19,8 @@ $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 
 // 変数の初期化＆配列宣言
 $data               = array();  // 下に一覧を取得して表示させるための配列
-$err_msg            = array();  // エラーメッセージ
+$err_msg        = array();  // エラーメッセージ
+$success_msg    = array(); // 処理成功メッセージ
 
 // ユーザーIDとパスワードを取得
 try {

@@ -7,9 +7,8 @@
     <title>イラスト音楽素材 マテリアル 「ログイン」</title>
     </head>
     <body class="back-image">
-        <header class="header-line logo-image">
-            
-        </header>
+        <!--ヘッダーのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/header.php'; ?>
         
         <main>
             <div class="radius-border main-width text-center">
@@ -22,10 +21,10 @@
                     <input type="hidden" name="mode" value="rogin">
                     <p><a class="new-text" href="register.php">新規作成</a></p>
                 </form>
-                <!--エラーメッセージ-->
-                <div class="red-text bold-text"><?php foreach($err_msg as $value){ ?>
-                <div> <?php print $value ?><br></div> 
-                <?php } ?></div>
+                
+                <!--メッセージのテンプレート-->
+                <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
+
                 <p class="text-color-gray text-mini">ログインしてほしい素材を手に入れましょう</p>
             </div>
         </main>

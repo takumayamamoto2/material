@@ -20,8 +20,8 @@ $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 $img_dir  = '../assets/img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
 $bgm_dir  = '../assets/bgm/';  //アップロードした新しい音楽ファイルの保存ディレクトリ
 $data     = array();  // 下に商品一覧を取得して表示させるための配列
-$err_msg  = array();  // エラーメッセージ
-$success_msg = ''; // 成功メッセージ
+$err_msg            = array();  // エラーメッセージ
+$success_msg        = array(); // 処理成功メッセージ
 $type_bind = 1; // バインドの初期値（イラスト）
 $number_regex       = '/^[0-9]+$/'; // 正規表現 半角数字
 $mode='';
@@ -112,7 +112,7 @@ try {
                 // SQLを実行
                 $stmt->execute();
                 // この処理まで来たら成功メッセージを格納する
-                $success_msg = '数量を変更しました';
+                $success_msg[] = '数量を変更しました';
             }   catch (PDOException $e) {
                 // 例外をスロー
                 throw $e;
@@ -134,7 +134,7 @@ try {
                 // SQLを実行
                 $stmt->execute();
                 // 成功メッセージ
-                $success_msg = '削除しました';
+                $success_msg[] = '削除しました';
             }   catch (PDOException $e) {
                 // 例外をスロー
                 throw $e;

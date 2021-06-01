@@ -22,8 +22,8 @@ $bgm_dir  = '../assets/bgm/';  //アップロードした新しい音楽ファ�
 $data     = array();  // 下に商品一覧を取得して表示させるための配列
 $name_data  = '';  // ユーザー名の取得用
 $come_data  = array();  // 下にコメント一覧を取得して表示させるための配列
-$err_msg  = array();  // エラーメッセージ
-$success_msg = ''; // 成功メッセージ
+$err_msg        = array();  // エラーメッセージ
+$success_msg    = array(); // 処理成功メッセージ
 $amount = 0;    //バインドする値をセット ユーザーが初めてその商品をクリックしたときの値
 $mode='';
 
@@ -148,7 +148,7 @@ try {
                 $stmt->execute();
                 // コミット
                 $dbh->commit();
-                $success_msg = '評価、コメントありがとうございました。';
+                $success_msg[] = '評価、コメントありがとうございました。';
             }   catch (PDOException $e) {
                 // トランザクションロールバック
                 $dbh->rollback();
@@ -215,7 +215,7 @@ try {
                 // SQLを実行
                 $stmt->execute();
                 // この処理まで来たら成功メッセージを格納する
-                $success_msg = 'カートに追加しました';
+                $success_msg[] = 'カートに追加しました';
             }   catch (PDOException $e) {
                 // 例外をスロー
                 throw $e;

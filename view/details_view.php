@@ -7,21 +7,14 @@
     <title>イラスト音楽素材 マテリアル 「商品詳細」</title>
     </head>
     <body class="back-color-sub">
-        <header class="header-line logo-image">
-            <ul class="header-list text-right set-right">
-                
-            <li class="margin"><?php print $user_name;?>さん</li>
-            <li class="margin"><a class="link-none" href="purchased.php">購入済み商品</a></li>
-            <li class="margin"><a class="link-none" href="cart.php">カート</a></li>
-            <li class="margin"><a class="link-none" href="logout.php">ログアウト</a></li>
-            
-            </ul>
-        </header>
+        <!--ヘッダーのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/header_logined.php'; ?>
+        
         <div class="back-color-nav">
             <nav class="width-900">
                 <div class="text-left"><a href="item_list.php">商品一覧に戻る</a></div>
-                <!--処理成功メッセージ-->
-                <div class="blue-text bold-text text-big"><?php print $success_msg; ?></div>
+                <!--メッセージのテンプレート-->
+                <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
                 
                 <form method="post" action="item_list.php" class="margin-bottom">
                 <?php if($rows['type'] === 1){

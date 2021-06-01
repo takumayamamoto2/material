@@ -7,9 +7,8 @@
     <title>イラスト音楽素材 マテリアル 「ユーザー登録」</title>
     </head>
     <body class="back-image">
-        <header class="header-line logo-image">
-            
-        </header>
+        <!--ヘッダーのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/header.php'; ?>
         
         <main>
             <div class="radius-border main-width text-center">
@@ -22,13 +21,10 @@
                     <p class="margin-bottom"><input id="password" class="seach-border" type="password" name="password" placeholder="パスワード"></p>
                     <p><input type="submit" class="green-text-button" value="新規登録する"></p>
                 </form>
-                <!--エラーメッセージ-->
-                <div class="red-text bold-text"><?php foreach($err_msg as $value){ ?>
-                <div> <?php print $value ?></div> 
-                <?php } ?></div>
                 
-                <!--成功メッセージ-->
-                <div class="blue-text bold-text"> <?php print $success_msg; ?> </div>
+                <!--メッセージのテンプレート-->
+                <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
+
                 <div><a href="login.php">ログインページに戻る</a></div>
             </div>
         </main>

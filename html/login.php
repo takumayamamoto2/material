@@ -16,8 +16,8 @@ $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 
 
 // 変数の初期化＆配列宣言
-$err_msg  = array();  // エラーメッセージ
-$success_msg = ''; // 成功メッセージ
+$err_msg        = array();  // エラーメッセージ
+$success_msg    = array(); // 処理成功メッセージ
 $mode='';
 
 // POST処理

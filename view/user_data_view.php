@@ -2,6 +2,8 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/4.1.0/sanitize.min.css">
+        <link rel="stylesheet" href="<?php print (STYLESHEET_PATH . 'item_list.css'); ?>">
         <title>イラスト音楽素材 マテリアル「ユーザー管理」</title>
         <style>
             div{
@@ -23,13 +25,11 @@
         </style>
     </head>
     <body>
-        
-        <!-- エラーに格納したものを書き出す -->
-        <ul>
-        <?php foreach($err_msg as $value){ ?>
-                <li> <?php print $value ?> </li>
-        <?php } ?>
-        </ul>
+        <!--ヘッダーのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/header_logined.php'; ?>
+
+        <!--メッセージのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
         
         <h1 style="border-bottom: solid 1px; padding-bottom: 20px;">イラスト・音楽素材 マテリアル ユーザー管理ツール</h1>
         <p><a class="" href="logout.php">ログアウト</a></p>
