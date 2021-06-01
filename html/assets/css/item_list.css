@@ -127,21 +127,21 @@ ul{
 
 /*画像なしの設定*/
 .no-image{
-    background-image: url(img/noimage.png);
+    background-image: url(../img/noimage.png);
     background-repeat: no-repeat;
     background-position: 0px;
 }
 
 /*ロゴの設定*/
 .logo-image{
-    background-image: url(img/material_logo.png);
+    background-image: url(../img/material_logo.png);
     background-repeat: no-repeat;
     background-position: 0px;
 }
 
 /*検索アイコンの設定*/
 .search-image{
-    background-image: url(img/search.png);
+    background-image: url(../img/search.png);
     background-repeat: no-repeat;
     background-position: 0px;
     height: 32px;

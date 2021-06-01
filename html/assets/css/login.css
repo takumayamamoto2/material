@@ -40,7 +40,7 @@ body{
 
 /*ロゴの設定*/
 .logo-image{
-    background-image: url(img/material_logo.png);
+    background-image: url(../img/material_logo.png);
     background-repeat: no-repeat;
     background-position: 0px;
 }
@@ -115,7 +115,7 @@ a{
 
 /*背景画像の設定*/
 .back-image{
-    background-image: url(img/back.jpg);
+    background-image: url(../img/back.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

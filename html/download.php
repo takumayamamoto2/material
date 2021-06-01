@@ -18,8 +18,8 @@ if(isset($_SESSION['user_id'])){
 $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 
 // 変数の初期化＆配列宣言
-$img_dir  = './img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
-$bgm_dir  = './bgm/';  //アップロードした新しい音楽ファイルの保存ディレクトリ
+$img_dir  = './assets/img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
+$bgm_dir  = './assets/bgm/';  //アップロードした新しい音楽ファイルの保存ディレクトリ
 $item_data = '';  // 下に商品一覧を取得して表示させるための配列
 $err_msg  = array();  // エラーメッセージ
 $item_id = '';
@@ -130,4 +130,3 @@ header('Content-disposition: attachment; filename="'.$filename.'.'.$extension);
 readfile($fpath);
 
 exit;
-?>
