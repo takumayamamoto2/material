@@ -7,20 +7,8 @@
     <title>イラスト音楽素材 マテリアル 「商品一覧」</title>
     </head>
     <body class="back-color-sub">
-        <header class="header-line logo-image">
-            <ul class="header-list text-right set-right">
-                
-            <li class="margin"><?php print $user_name;?>さん</li>
-            <li class="margin"><a class="link-none" href="purchased.php">購入済み商品</a></li>
-            <li class="margin"><a class="link-none" href="cart.php">カート</a></li>
-            <li class="margin"><a class="link-none" href="logout.php">ログアウト</a></li>
-            
-            </ul>
-        </header>
-        <!-- エラーに格納したものを書き出す -->
-        <div class="red-text bold-text text-big"><?php foreach($err_msg as $value){ ?>
-        <div> <?php print $value ?><br></div> 
-        <?php } ?></div>
+        <!--ヘッダーのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/header_logined.php'; ?>
         
         <div class="back-color-nav">
             <nav class="width-900">
@@ -101,8 +89,10 @@
         </div>
         <main>
             <div class="width-900 back-color-main padding">
-                <!--処理成功メッセージ-->
-                <div class="green-text bold-text text-big"><?php print $success_msg; ?></div>
+
+                <!--メッセージのテンプレート-->
+                <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
+
                 <!--データベースから件数を取得-->
                 <p>検索結果：
                 <?php  

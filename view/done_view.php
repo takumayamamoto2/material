@@ -7,29 +7,16 @@
     <title>イラスト音楽素材 マテリアル 「購入完了」</title>
     </head>
     <body class="back-color-sub">
-        <header class="header-line logo-image">
-            <ul class="header-list text-right set-right">
-                
-            <li class="margin"><?php print $user_name;?>さん</li>
-            <li class="margin"><a class="link-none" href="purchased.php">購入済み商品</a></li>
-            <li class="margin"><a class="link-none" href="cart.php">カート</a></li>
-            <li class="margin"><a class="link-none" href="logout.php">ログアウト</a></li>
-            
-            </ul>
-        </header>
+        <!--ヘッダーのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/header_logined.php'; ?>
         
         <nav>
             <p><a href="item_list.php">商品一覧に戻る</a></p>
         </nav>
         
         <main class="min-1000">
-            <!--エラーメッセージ-->
-            <div class="red-text bold-text text-big"><?php foreach($err_msg as $value){ ?>
-            <div> <?php print $value ?><br></div> 
-            <?php } ?></div>
-            
-            <!--処理成功メッセージ-->
-            <div class="title-text"><?php print $success_msg; ?></div>
+            <!--メッセージのテンプレート-->
+            <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
             
              <!--直接このページにアクセスしたときのメッセージ-->
             <?php if(isset($sum['amount_sum']) === FALSE){ ?>

@@ -21,7 +21,8 @@ $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 $img_dir  = './assets/img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
 $bgm_dir  = './assets/bgm/';  //アップロードした新しい音楽ファイルの保存ディレクトリ
 $item_data = '';  // 下に商品一覧を取得して表示させるための配列
-$err_msg  = array();  // エラーメッセージ
+$err_msg        = array();  // エラーメッセージ
+$success_msg    = array(); // 処理成功メッセージ
 $item_id = '';
 $fpath = '';
 $filename = '';

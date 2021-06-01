@@ -23,6 +23,10 @@ ul{
     display: block;
 }
 
+.inline{
+    display:inline;
+}
+
 /*flexモード*/
 .flex{
     display: flex;

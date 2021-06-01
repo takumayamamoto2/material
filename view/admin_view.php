@@ -2,6 +2,8 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/4.1.0/sanitize.min.css">
+        <link rel="stylesheet" href="<?php print (STYLESHEET_PATH . 'item_list.css'); ?>">
         <title>マテリアル 商品管理ツール</title>
         <style>
             div{
@@ -23,31 +25,24 @@
         </style>
     </head>
     <body>
-        
-        <!-- 新規商品追加用のエラーに格納したものを書き出す -->
-        <ul>
-        <?php foreach($err_msg as $value){ ?>
-                <li> <?php print $value ?> </li>
-        <?php } ?>
-        <!-- 処理成功用のメッセージに格納したものを書き出す -->
-        <?php foreach($success_msg as $value){ ?>
-                <li> <?php print $value ?> </li>
-        <?php } ?>
-        </ul>
+        <!--ヘッダーのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/header_logined.php'; ?>
+
+        <!--メッセージのテンプレート-->
+        <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
         
         <h1 style="border-bottom: solid 1px; padding-bottom: 20px;">イラスト・音楽素材 マテリアル 商品管理ツール</h1>
-        <p><a class="" href="logout.php">ログアウト</a></p>
         <p><a href="user_data.php">ユーザー管理ページ</a></p>
         <a href="item_list.php">商品一覧ページ</a>
         <h2>新規商品追加</h2>
         
         <form method="post" class="form-boder" enctype="multipart/form-data">
-            <div>名前：<input type="text" name="item_name"></div>
-            <div>値段：<input type="text" name="price"></div>
-            <div>個数：<input type="text" name="stock"></div>
+            <div>名前：<input class="normal-border" type="text" name="item_name"></div>
+            <div>値段：<input class="normal-border" type="number" name="price"></div>
+            <div>個数：<input class="normal-border" type="number" name="stock"></div>
             <div><input type="file" name="new_file"></div>
             <div>ジャンル：
-                <select name="type2">
+                <select  class="normal-border" name="type2">
                     <option value="アイコン">アイコン</option>
                     <option value="ヘッダー">ヘッダー</option>
                     <option value="立ち絵">立ち絵</option>
@@ -57,16 +52,16 @@
                 </select>
             </div>
             <div>公開ステータス：
-                <select name="release">
+                <select class="normal-border" name="release">
                     <option value="0">非公開</option>
                     <option value="1">公開</option>
                 </select>
             </div>
             <div>商品説明</div>
-            <textarea cols="40" rows="5" name="comment"></textarea>
+            <textarea class="comment-box" cols="40" rows="5" name="comment"></textarea>
             <input type="hidden" name="star" value="3"> <!--デフォルトの値 星3-->
             <input type="hidden" name="review_amount" value="1"> <!--デフォルトの値 レビュー回数-->
-            <div><input type="submit" value="商品を追加"></div>
+            <div><input class="red-text-button margin" type="submit" value="商品を追加"></div>
         </form>
         
         <h2>商品情報変更</h2>
@@ -97,14 +92,14 @@
             
             <td>
                 <form method="post">
-                    <input type="text" name="stock_up" size="5" value="<?php print $value['stock']; ?>">個
+                    <input class="normal-border margin" type="text" name="stock_up" size="5" value="<?php print $value['stock']; ?>">個
                     <input type="hidden" name="item_id" value="<?php print $value['id']; ?>">
-                    <input type="submit" value="変更">
+                    <input class="gray-button" type="submit" value="変更">
                 </form>
             </td>
             <td>
                 <form method="post">
-                    <input type="submit" value="<?php if($value['status'] === 1){ print "公開 → 非公開"; } else { print "非公開 → 公開";}?>">
+                    <input class="gray-button margin" type="submit" value="<?php if($value['status'] === 1){ print "公開 → 非公開"; } else { print "非公開 → 公開";}?>">
                     <input type="hidden" name="item_id" value="<?php print $value['id']; ?>">
                     <input type="hidden" name="release"  value="<?php print $value['status']; ?>">
                 </form>
@@ -126,7 +121,7 @@
             
             <td>
                 <form method="post">
-                    <input type="submit" name="delete" size="5" value="削除">
+                    <input class="gray-button margin" type="submit" name="delete" size="5" value="削除">
                     <input type="hidden" name="item_id" value="<?php print $value['id']; ?>">
                 </form>
             </td>

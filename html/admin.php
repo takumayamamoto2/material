@@ -18,8 +18,8 @@ if($_SESSION['user_id'] === 1){
 $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 
 // 変数の初期化＆配列宣言
-$img_dir            = '../assets/img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
-$bgm_dir            = '../assets/bgm/';  //アップロードした新しい音楽ファイルの保存ディレクトリ
+$img_dir            = './assets/img/';  //アップロードした新しい画像ファイルの保存ディレクトリ
+$bgm_dir            = './assets/bgm/';  //アップロードした新しい音楽ファイルの保存ディレクトリ
 $data               = array();  // 下に商品一覧を取得して表示させるための配列
 $err_msg            = array();  // エラーメッセージ
 $success_msg        = array();  // 処理成功メッセージ

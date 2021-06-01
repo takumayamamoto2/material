@@ -17,7 +17,7 @@ $dsn = 'mysql:dbname='. DB_NAME .';host='. DB_HOST.';charset='. DB_CHARSET;
 // 変数の初期化＆配列宣言
 $data               = array();  // 下に商品一覧を取得して表示させるための配列
 $err_msg            = array();  // エラーメッセージ
-$success_msg        = ''; // 処理成功メッセージ
+$success_msg        = array(); // 処理成功メッセージ
 $login_regex       = '/^[a-zA-Z0-9]{6,}$/'; // 正規表現 半角英数字
 $already_name   = '';
 
@@ -96,7 +96,7 @@ try {
                 // SQLを実行
                 $stmt->execute();
                 // この処理まで来たら成功メッセージを格納する
-                $success_msg = 'アカウント作成が完了しました';
+                $success_msg[] = 'アカウント作成が完了しました';
             
             } catch(PDOException $e){
               // 接続失敗した場合

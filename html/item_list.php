@@ -24,8 +24,8 @@ $bgm_dir  = '../assets/bgm/';  //アップロードした新しい音楽ファ�
 $data     = array();  // 下に商品一覧を取得して表示させるための配列
 $data_sort  = array();  // 下に商品一覧を取得して表示させるための配列
 $name_data  = '';  // ユーザー名の取得用
-$err_msg  = array();  // エラーメッセージ
-$success_msg = ''; // 成功メッセージ
+$err_msg        = array();  // エラーメッセージ
+$success_msg    = array(); // 処理成功メッセージ
 $type_bind = ''; // バインドの初期値）
 $amount = 0;    //バインドする値をセット ユーザーが初めてその商品をクリックしたときの値
 $mode=''; // フォームから送られてきたものを判別するためのモード
@@ -129,7 +129,7 @@ try {
                 // SQLを実行
                 $stmt->execute();
                 // この処理まで来たら成功メッセージを格納する
-                $success_msg = 'カートに追加しました';
+                $success_msg[] = 'カートに追加しました';
             }   catch (PDOException $e) {
                 // 例外をスロー
                 throw $e;
