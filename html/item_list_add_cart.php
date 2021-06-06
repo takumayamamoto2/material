@@ -5,7 +5,6 @@ require_once MODEL_PATH . 'user.php';
 require_once MODEL_PATH . 'item.php';
 require_once MODEL_PATH . 'function.php';
 require_once MODEL_PATH . 'cart.php';
-require_once MODEL_PATH . 'valid.php';
 
 // セッション開始
 session_start();
@@ -16,26 +15,22 @@ if(login_check() === false){
 
 // トークンがPOSTの値とセッションの値で同一であるか調べ、
 // 検証後、セッションを破棄し、違っていればメッセージセット＆引数のページに飛ぶ
-is_valid_csrf_token_check(PURCHASE_URL);
+is_valid_csrf_token_check(HOME_URL);
 
 // データベースの接続を確立
 $db = getdb_connect();
 // ユーザーデータをセッション関数とデータベースを使って取り出す
 $user = login_user_data($db);
 
-
-// どの商品が押されたかをキャッチ
+// どの商品の「カートに追加」が押されたかを取得
 $item_id = get_post('item_id');
 
-
-
-// ユーザーの購入情報をデータベースから取得
-$item_data = user_purchase_history($db, $user['user_id'], $item_id);
-
-if(item_download($item_data) === false){
-    set_error('ダウンロードに失敗しました');
+// カートに追加ボタンが押された時の処理
+if(user_cart_add($db, $user['user_id'], $item_id) === true){
+    set_message('カートに追加しました');    
 } else {
-    ser_message($item_data['name'] .'をダウンロードしました');
+    set_message('カートの追加に失敗しました');
 }
 
-redirect_to(PURCHASE_URL);
+
+redirect_to(HOME_URL);

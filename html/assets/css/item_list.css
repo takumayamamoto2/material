@@ -23,6 +23,7 @@ ul{
     display: block;
 }
 
+/*インラインモード*/
 .inline{
     display:inline;
 }
@@ -269,6 +270,16 @@ ul{
 /*囲い*/
 .normal-border{
     border: solid 1px #555555;
+}
+
+/*上の線*/
+.top-border{
+    border-top: solid 1px #555555;
+}
+
+/*下の線*/
+.bottom-border{
+    border-bottom: solid 1px #555555;
 }
 
 /*パディング*/

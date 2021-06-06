@@ -28,30 +28,33 @@
         <!--ヘッダーのテンプレート-->
         <?php include_once VIEW_PATH . 'templates/header_logined.php'; ?>
 
+        
         <!--メッセージのテンプレート-->
         <?php include_once VIEW_PATH . 'templates/messeage.php'; ?>
-        
+            
         <h1 style="border-bottom: solid 1px; padding-bottom: 20px;">イラスト・音楽素材 マテリアル ユーザー管理ツール</h1>
-        <p><a class="" href="logout.php">ログアウト</a></p>
-        <a href="admin.php">商品管理ページ</a>
-        <h2>ユーザー情報一覧</h2>
         
-        <table border="1" cellspacing="0" cellpadding="0" width="900">
-        <tr>
-            <th>ユーザー名</th>
-            <th>登録日時</th>
-        </tr>
-        
-        <!-- 読み込んだ名前と登録日を書き出す -->
-        <?php foreach($data as $value) {?>
-        <tr>
-            <td><?php print htmlspecialchars($value['user_name'], ENT_QUOTES,'UTF-8');?></td>
-            <td><?php print $value['createdate']; ?></td>
-        </tr>
-        <?php
-        }
-        ?>
-        
-        </table>
+        <div class="width-900-only padding margin-center">
+            <a href="admin.php">商品管理ページ</a>    
+            <h2>ユーザー情報一覧</h2>
+            
+            <table border="1" cellspacing="0" cellpadding="0" width="900">
+            <tr>
+                <th>ユーザー名</th>
+                <th>登録日時</th>
+            </tr>
+            
+            <!-- 読み込んだ名前と登録日を書き出す -->
+            <?php foreach($user_data as $value) {?>
+            <tr>
+                <td><?php print $value['user_name'];?></td>
+                <td><?php print $value['createdate']; ?></td>
+            </tr>
+            <?php
+            }
+            ?>
+            
+            </table>
+        </div>
     </body>
 </html>

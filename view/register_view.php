@@ -14,7 +14,7 @@
             <div class="radius-border main-width text-center">
                 <p class="title-text m-p-reset">新規ユーザー登録</p>
                 <p class="margin-bottom text-mini">新しいユーザー名とパスワードを入力する</p>
-                <form method="post">
+                <form method="post" action = "register_process.php">
                     <label for="user_id" class="m-p-reset">ユーザー名</label>
                     <p class="margin-bottom"><input id="user_id" class="seach-border" type="text" name="user_name" placeholder="ユーザー名"></p>
                     <label for="password" class="m-p-reset">パスワード</label>

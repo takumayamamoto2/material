@@ -14,21 +14,24 @@ if(login_check() === false){
     redirect_to(LOGIN_URL);
 }
 
+// トークンがPOSTの値とセッションの値で同一であるか調べ、
+// 検証後、セッションを破棄し、違っていればメッセージセット＆引数のページに飛ぶ
+is_valid_csrf_token_check(CART_URL);
+
 // データベースの接続を確立
 $db = getdb_connect();
 // ユーザーデータをセッション関数とデータベースを使って取り出す
 $user = login_user_data($db);
 
+// どの商品の「削除」が押されたかを取得
+$item_id = get_post('item_id');
 
 // ユーザーのカート情報をデータベースから取得
-$user_cart_items = get_user_cart_items($db, $user['user_id']);
+if(user_cart_delete_item($db, $item_id, $user['user_id']) !== false){
+    set_message('削除しました');
+} else {
+    set_error('削除に失敗しました');
+}
 
-// 合計数量と合計金額 material_itemsとmaterial_cartsの合計値を取得
-$user_cart_sum = get_user_cart_sum($db, $user['user_id']);
 
-// 表示データをHTMLエンティティに変換する
-$user_cart_items = entity_change($user_cart_items);
-
-// トークンを取得する
-get_csrf_token();
-include_once VIEW_PATH . 'cart_view.php';
+redirect_to(CART_URL);
