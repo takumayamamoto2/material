@@ -70,6 +70,7 @@ function get_user_cart_items($db, $user_id){
     material_items.comment,
     material_items.price,
     material_items.stock,
+    material_items.status,
     material_carts.item_id,
     material_carts.amount
   FROM
