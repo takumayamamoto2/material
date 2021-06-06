@@ -15,30 +15,29 @@ if(login_check() === false){
     redirect_to(LOGIN_URL);
 }
 
+// トークンがPOSTの値とセッションの値で同一であるか調べ、
+// 検証後、セッションを破棄し、違っていればメッセージセット＆引数のページに飛ぶ
+is_valid_csrf_token_check(CART_URL);
+
 // データベースの接続を確立
 $db = getdb_connect();
 // ユーザーデータをセッション関数とデータベースを使って取り出す
 $user = login_user_data($db);
 
+// 変更数量を取得
+$amount = get_post('amount_change');
+// どの商品の「変更」が押されたかを取得
+$item_id = get_post('item_id');
 
-if(get_post('mode') === 'done'){
+
+// 正の整数が入力されているかチェック
+if(is_valid_item_stock($amount) === true){
     // ユーザーのカート情報をデータベースから取得
-    $user_cart_items = get_user_cart_items($db, $user['user_id']);
-
-    // SQL文を作成 material_itemsとmaterial_cartsの合計値を取得
-    $user_cart_sum = get_user_cart_sum($db, $user['user_id']);
-
-    // 購入前のカート情報が正しいかのチェック
-    if(cart_valid($user_cart_items) === true){
-        // 商品購入処理
-        if(transaction_done($db, $user, $user_cart_items) === false){
-            set_error('商品の購入に失敗しました');
-        }
+    if(user_cart_amount_change($db, $amount, $item_id, $user['user_id']) !== false){
+        set_message('数量変更しました');
+    } else {
+        set_error('数量変更に失敗しました');
     }
-    // 表示データをHTMLエンティティに変換する
-    $user_cart_items = entity_change($user_cart_items);
 }
 
-// トークンを取得する
-get_csrf_token();
-include_once VIEW_PATH . 'done_view.php';
+redirect_to(CART_URL);

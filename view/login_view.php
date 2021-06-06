@@ -14,7 +14,7 @@
             <div class="radius-border main-width text-center">
                 <p class="title-text m-p-reset">ログイン</p>
                 <p class="text-mini">ユーザー名とパスワードを入力してログイン</p>
-                <form method="post">
+                <form method="post" action="login_process.php">
                     <p><input class="seach-border" type="text" name="user_name" placeholder="ユーザー名"></p>
                     <p><input class="seach-border" type="password" name="password" placeholder="パスワード"></p>
                     <p><input class="green-text-button" type="submit" value="ログイン"></p>

@@ -4,7 +4,7 @@ require_once '../conf/const.php';
 require_once MODEL_PATH . 'user.php';
 require_once MODEL_PATH . 'item.php';
 require_once MODEL_PATH . 'function.php';
-require_once MODEL_PATH . 'cart.php';
+require_once MODEL_PATH . 'review.php';
 require_once MODEL_PATH . 'valid.php';
 
 // セッション開始
@@ -16,7 +16,7 @@ if(login_check() === false){
 
 // トークンがPOSTの値とセッションの値で同一であるか調べ、
 // 検証後、セッションを破棄し、違っていればメッセージセット＆引数のページに飛ぶ
-is_valid_csrf_token_check(PURCHASE_URL);
+is_valid_csrf_token_check(DETAILS_URL);
 
 // データベースの接続を確立
 $db = getdb_connect();
@@ -24,18 +24,22 @@ $db = getdb_connect();
 $user = login_user_data($db);
 
 
-// どの商品が押されたかをキャッチ
+// レビューの商品IDが飛んできたらpostでキャッチ
 $item_id = get_post('item_id');
+// レビューのコメントが飛んできたらpostでキャッチ
+$user_comment = get_post('comment');
+// レビューの星が飛んできたらpostでキャッチ
+$star = get_post('star');
 
 
-
-// ユーザーの購入情報をデータベースから取得
-$item_data = user_purchase_history($db, $user['user_id'], $item_id);
-
-if(item_download($item_data) === false){
-    set_error('ダウンロードに失敗しました');
-} else {
-    ser_message($item_data['name'] .'をダウンロードしました');
+// ユーザーからのレビューが正しい情報だったら、データベースに登録
+if(validate_user_review($star, $user_comment) === true){
+    if(review_transaction($db, $item_id, $user['user_id'], $user['user_name'], $user_comment, $star) === true){
+        set_message('評価、コメントありがとうございました。');
+    } else {
+        set_error('評価、コメントの登録に失敗しました');
+    }
 }
 
-redirect_to(PURCHASE_URL);
+
+redirect_to(DETAILS_URL);
