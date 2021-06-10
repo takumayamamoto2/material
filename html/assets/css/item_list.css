@@ -59,6 +59,8 @@ ul{
     height: 50px;
     background-color: #83c34a;
     padding: 10px;
+    width: 100%;
+    min-width: 1060px;
 }
 
 /*flexの比率１*/
@@ -348,6 +350,8 @@ dt,dd{
     background-color: #ffffff;
     border-top: solid 1px #83c34a;
     border-bottom: solid 1px #aaaaaa;
+    width: 100%;
+    min-width: 1060px;
 }
 
 /*ショッピングカート商品欄*/

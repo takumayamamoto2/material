@@ -35,11 +35,11 @@ $type_bind = get_session('item_type');
 
 
 // 検索情報が飛んできたらpostでキャッチ
-$search = get_post('search');
+$search = get_get('search');
 // 並び替え情報が飛んできたらpostでキャッチ
-$sort = get_post('sort');
+$sort = get_get('sort');
 // 絞り込み情報が飛んできたらpostでキャッチ
-$squeeze = get_post('squeeze');
+$squeeze = get_get('squeeze');
 
 // 商品一覧の商品検索・並べ替え・絞り込み
 $item_data = item_search($db, $type_bind, $search, $sort, $squeeze);
