@@ -51,6 +51,8 @@ body{
     border-bottom: solid 1px #83c34a;
     margin-bottom: 180px;
     background-color: #83c34a;
+    width: 100%;
+    min-width: 1060px;
 }
 /*文字を真ん中に*/
 .text-center{

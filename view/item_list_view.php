@@ -12,17 +12,19 @@
         
         <div class="back-color-nav">
             <nav class="width-900">
-                <div method="post" class="margin-bottom">
-                <form method="post">
-                    <?php if($type_bind == ITEM_TYPE['illust']){
-                    print'<p><input class="search-border" type="search" name="search" placeholder="商品を検索"><input class="normal-border padding search-image pointer" type="submit" value=" "></p>
-                          <input type="hidden" name="illust" value="$data[type]">'; 
-                    }?>
+                <div class="margin-bottom">
+                <form method="get">
+                    <?php if($type_bind == ITEM_TYPE['illust']){ ?>
+                          <p><input class="search-border" type="search" name="search" placeholder="商品を検索" value="<?php if(isset($search)){ print $search; } ?>">
+                             <input class="normal-border padding search-image pointer" type="submit" value=" "></p>
+                          <input type="hidden" name="illust" value="<?php $data['type']; ?>"> 
+                    <?php }?>
                     
-                    <?php if($type_bind == ITEM_TYPE['music']){
-                    print'<p><input class="search-border" type="search" name="search" placeholder="商品を検索"><input class="normal-border padding search-image pointer" type="submit" value=" "></p>
-                          <input type="hidden" name="music" value="$data[type]">'; 
-                    }?>
+                    <?php if($type_bind == ITEM_TYPE['music']){ ?>
+                          <p><input class="search-border" type="search" name="search" placeholder="商品を検索" value="<?php if(isset($search)){ print $search; } ?>">
+                             <input class="normal-border padding search-image pointer" type="submit" value=" "></p>
+                             <input type="hidden" name="music" value="<?php $data['type']; ?>">
+                    <?php }?>
                     <input type="hidden" name="mode" value="search">
                 </form>
                     <div class="flex">
@@ -37,7 +39,7 @@
                         </form>
                         </div>
 
-                        <form method="post" class="flex-para">
+                        <form method="get" class="flex-para">
                             <select name="sort" class="normal-border padding">
                             <?php if($type_bind == ITEM_TYPE['illust']){
                                 
@@ -61,7 +63,7 @@
                             <input type="hidden" name="mode" value="search">
                         </form>
                         
-                        <form method="post" class="flex-para">
+                        <form method="get" class="flex-para">
                             <select name="squeeze" class="normal-border padding">
                             <?php if($type_bind == ITEM_TYPE['illust']){
                                   print '<option value="%" '?> <?php if($squeeze === '%'){ print 'selected';} ?> <?php print '>全て</option>'?>
